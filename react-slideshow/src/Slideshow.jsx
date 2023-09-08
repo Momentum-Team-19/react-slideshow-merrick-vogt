@@ -1,5 +1,10 @@
 import { useState } from 'react'
 import './App.css'
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import Container from '@mui/material/Container';
+
 
 
 // Reference: https://reactjsguru.com/how-to-make-image-slider-in-react/
@@ -36,30 +41,101 @@ function Slideshow(props) {
   //'films.map' is missing in props validation
 
   return (
-    <div className="slideshow-container">
-      <div className="slideshow">
-
-        {/* map through the films. if the index is the current slide, then set the slide
-        to slide active. */}
-
+    <Container maxWidth="lg"
+      sx={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -70%)'}}
+    >
+      
+      <Box className="custom-box"
+        sx={{ 
+          padding: 3, 
+          backgroundColor: 'skyblue', 
+          display: 'flex', 
+          flexDirection: 'column', 
+          alignItems: 'center'  }}>
+        
+        
         {props.films.map((film, index) => (
-          <div className={index === currentSlide ? 'slide active' : 'slide'} key={index}>
-              
-              {/* what is going on here inside the div? */}
-              {/* the index === currentSlide shifts the slide content to the same height */}
-              {index === currentSlide && (<p>{film.title}</p>)}
-          
-          </div>
 
+          <Box key={index} className="custom-card"
+            sx={{ 
+              display: index === currentSlide ? 'block' : 'none' }}
+              >
+            <h1 style={{textAlign: 'center'}} >{film.title}</h1>
+
+            <Grid  
+              container spacing={2} 
+              justifyContent="center" 
+              alignItems="center"
+              direction="row"
+              sx={{ flexDirection: 'row', flexWrap: 'nowrap' }}
+              
+            >
+              
+              <Grid item >
+                <Box
+                  component="img"
+                  src={film.image}
+                  alt={film.title}
+                  sx={{
+                    width: 300,
+                    height: 'auto',
+                    
+                  }}
+                />
+              </Grid>
+
+              <Grid item sx={{ textAlign: 'center' }}>
+
+                <h2>{film.original_title}</h2>
+                <h3>{film.release_date}</h3>
+                <p>{film.description}</p>
+              
+              
+              </Grid>
+            </Grid>
+          </Box>
+          
+          
         ))}
 
-      <button className="restart" onClick={restartSlide}>Restart</button>
-      <button className="prev" onClick={prevSlide}>Prev</button>
-      <button className="next" onClick={nextSlide}>Next</button>
-            
-      </div>
-    </div>
-  )
+        <Grid container spacing={2} justifyContent="center">
+          <Grid item>
+            <Button
+              variant="contained"
+              onClick={restartSlide}
+              disabled={currentSlide === 0}
+            >
+              Restart
+            </Button>
+          </Grid>
+
+          <Grid item>
+            <Button
+              variant="contained"
+              onClick={prevSlide}
+              disabled={currentSlide === 0}
+            >
+              Prev
+            </Button>
+          </Grid>
+
+          <Grid item>
+            <Button
+              variant="contained"
+              onClick={nextSlide}
+              disabled={currentSlide === length - 1}
+            >
+              Next
+            </Button>
+          </Grid>
+        </Grid>
+      </Box>
+    </Container>
+  );
 }
 
-export default Slideshow
+export default Slideshow;
