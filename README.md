@@ -50,7 +50,7 @@ X - Create a component called `Slideshow` in a file called `Slideshow.jsx`. You 
 X - App.jsx should render the `Slideshow` component.
 X - Put the data file in the `src` directory and import it in the file you want to use it in.
 X - Pass the slide data in as a prop from App.jsx to the `Slideshow` component. The data can then be used in the `Slideshow` component.
-- Figure out what you want the UI to look like. What elements will the JSX need to include?
+X - Figure out what you want the UI to look like. What elements will the JSX need to include?
 X - Think about how you will make it possible to show a single film in the UI. How could this work? (hint: you'll need the `useState` hook)
 X - Once you have one film showing in the UI, consider how a click on the next button could tell React that the next slide should be shown. (hint: you will need an `onClick` event handler)
 
