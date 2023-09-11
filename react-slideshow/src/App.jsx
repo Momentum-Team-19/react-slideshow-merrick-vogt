@@ -8,7 +8,6 @@ function App() {
     <>
       <Slideshow 
         films = {filmData}
-
       />
     </>
   )

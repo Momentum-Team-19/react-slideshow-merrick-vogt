@@ -5,8 +5,6 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 
-
-
 // Reference: https://reactjsguru.com/how-to-make-image-slider-in-react/
 
 function Slideshow(props) {
